@@ -1,0 +1,125 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="theme-color" content="#0b0d10">
+  <title>Fuerza 3+1 · Seguimiento</title>
+  <meta name="description" content="Rutina 3+1 con técnica y seguimiento de cargas.">
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%230b0d10'/%3E%3Cpath d='M13 27v10m7-16v22m24-22v22m7-16v10M20 32h24' stroke='%23ff3b30' stroke-width='6' stroke-linecap='round'/%3E%3C/svg%3E">
+  <style>
+    :root{--bg:#0b0d10;--panel:#14171c;--panel2:#1b1f26;--line:#2b3039;--text:#f6f7f9;--muted:#9ba3af;--red:#ff3b30;--green:#58d68d;--radius:18px}
+    *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:radial-gradient(circle at 85% -10%,#321113 0,transparent 30%),var(--bg);color:var(--text);font:16px/1.45 Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif}
+    button,input,textarea{font:inherit}button{cursor:pointer}.app{max-width:900px;margin:auto;padding:18px 16px 112px}
+    header{display:flex;justify-content:space-between;align-items:flex-start;gap:14px;margin:6px 0 20px}.eyebrow{font-size:.78rem;font-weight:800;color:var(--red);letter-spacing:.14em;text-transform:uppercase}h1{font-size:clamp(1.8rem,7vw,3rem);line-height:1;margin:.35rem 0}.sub{color:var(--muted);margin:0}.datebox{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:10px 12px;text-align:center;min-width:74px}.datebox b{display:block;font-size:1.35rem}.datebox span{font-size:.75rem;color:var(--muted);text-transform:uppercase}
+    .summary{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:18px}.metric{background:linear-gradient(145deg,var(--panel2),var(--panel));border:1px solid var(--line);border-radius:15px;padding:12px}.metric span{display:block;color:var(--muted);font-size:.78rem}.metric strong{font-size:1.05rem}
+    .tabs{display:flex;gap:8px;overflow:auto;padding:2px 0 12px;position:sticky;top:0;z-index:10;background:linear-gradient(var(--bg) 75%,transparent)}.tab{border:1px solid var(--line);background:#12151a;color:var(--muted);border-radius:999px;padding:10px 15px;white-space:nowrap;font-weight:800}.tab.active{background:var(--red);border-color:var(--red);color:#fff;box-shadow:0 8px 24px #ff3b3035}
+    .dayhead{margin:10px 0 14px}.dayhead h2{font-size:1.45rem;margin:0}.dayhead p{margin:4px 0;color:var(--muted)}
+    .exercise{background:linear-gradient(145deg,#171a20,#111419);border:1px solid var(--line);border-radius:var(--radius);margin:12px 0;overflow:hidden}.ex-top{display:flex;align-items:center;gap:12px;padding:15px}.num{width:36px;height:36px;display:grid;place-items:center;border-radius:11px;background:#2a1415;color:#ff6b63;font-weight:900}.ex-name{flex:1}.ex-name h3{font-size:1rem;margin:0}.ex-name p{color:var(--muted);font-size:.78rem;margin:3px 0 0}.last{font-size:.76rem;text-align:right;color:var(--muted)}.last b{display:block;color:var(--green);font-size:.9rem}
+    .sets{display:grid;gap:8px;padding:0 15px 14px}.setrow{display:grid;grid-template-columns:38px 1fr 1fr 36px;gap:8px;align-items:center}.setno{color:var(--muted);font-size:.78rem}.field{display:flex;align-items:center;background:#0b0d11;border:1px solid var(--line);border-radius:11px;overflow:hidden}.field input{width:100%;min-width:0;background:transparent;border:0;color:white;padding:10px;text-align:center;outline:none;font-weight:750}.field span{padding-right:9px;color:var(--muted);font-size:.72rem}.done{width:32px;height:32px;border-radius:9px;border:1px solid var(--line);background:#101319;color:transparent}.done.checked{background:var(--green);border-color:var(--green);color:#07110b}.tech-toggle{width:100%;border:0;border-top:1px solid var(--line);background:#13161b;color:#dfe3e8;padding:12px 15px;text-align:left;font-weight:750;display:flex;justify-content:space-between}.tech{display:none;padding:14px 16px 17px;background:#0e1115;border-top:1px solid var(--line)}.tech.open{display:block}.tech h4{font-size:.8rem;color:var(--red);text-transform:uppercase;letter-spacing:.08em;margin:10px 0 4px}.tech p{margin:0;color:#d3d7dd;font-size:.9rem}.tech ul{margin:5px 0 0;padding-left:20px;color:#d3d7dd;font-size:.9rem}
+    .notes{width:100%;min-height:76px;background:var(--panel);border:1px solid var(--line);border-radius:14px;color:white;padding:12px;resize:vertical}.savebar{position:fixed;left:0;right:0;bottom:0;z-index:20;background:#0b0d10e8;backdrop-filter:blur(14px);border-top:1px solid var(--line);padding:12px max(16px,calc((100vw - 900px)/2 + 16px)) calc(12px + env(safe-area-inset-bottom));display:flex;gap:10px}.primary{flex:1;border:0;border-radius:14px;background:var(--red);color:white;font-weight:900;padding:14px}.secondary{border:1px solid var(--line);border-radius:14px;background:var(--panel);color:white;padding:0 16px;font-weight:750}
+    .toast{position:fixed;left:50%;bottom:90px;transform:translate(-50%,20px);background:white;color:#111;padding:11px 16px;border-radius:999px;font-weight:800;opacity:0;pointer-events:none;transition:.25s;z-index:30}.toast.show{opacity:1;transform:translate(-50%,0)}
+    dialog{width:min(92vw,620px);max-height:82vh;border:1px solid var(--line);border-radius:20px;background:#111419;color:white;padding:0;box-shadow:0 30px 80px #000c}dialog::backdrop{background:#000a}.modalhead{position:sticky;top:0;background:#111419;border-bottom:1px solid var(--line);padding:16px;display:flex;justify-content:space-between;align-items:center}.modalhead h2{margin:0;font-size:1.2rem}.close{border:0;background:#252a32;color:#fff;border-radius:10px;width:36px;height:36px}.history{padding:12px 16px 20px}.histrow{border-bottom:1px solid var(--line);padding:12px 0}.histrow b{color:var(--green)}.empty{color:var(--muted);text-align:center;padding:35px 10px}
+    @media(min-width:700px){.app{padding-top:28px}.exercise{margin:14px 0}.sets{grid-template-columns:1fr 1fr}.setrow{grid-template-columns:38px 1fr 1fr 36px}.tabs{top:0;padding-top:10px}.dayhead{display:flex;justify-content:space-between;align-items:end}}
+  </style>
+</head>
+<body>
+<main class="app">
+  <header>
+    <div><div class="eyebrow">Entrenamiento personal</div><h1>Fuerza 3+1</h1><p class="sub">Entrena todo. Registra todo. Progresa sin perder el ritmo.</p></div>
+    <div class="datebox"><b id="dayNum">--</b><span id="month">---</span></div>
+  </header>
+  <section class="summary" aria-label="Resumen">
+    <div class="metric"><span>Sesiones</span><strong id="totalSessions">0</strong></div>
+    <div class="metric"><span>Esta semana</span><strong id="weekSessions">0 / 3</strong></div>
+    <div class="metric"><span>Última</span><strong id="lastDate">—</strong></div>
+  </section>
+  <nav class="tabs" id="tabs" aria-label="Días de entrenamiento"></nav>
+  <section id="workout"></section>
+  <label for="notes" class="eyebrow" style="display:block;margin-top:20px">Notas de la sesión</label>
+  <textarea id="notes" class="notes" placeholder="Cómo te has sentido, molestias, cambios de máquina…"></textarea>
+</main>
+<div class="savebar"><button class="secondary" id="historyBtn">Historial</button><button class="primary" id="saveBtn">Guardar entrenamiento</button></div>
+<div class="toast" id="toast">Entrenamiento guardado</div>
+<dialog id="historyDialog"><div class="modalhead"><h2>Historial de entrenamientos</h2><button class="close" id="closeHistory" aria-label="Cerrar">×</button></div><div class="history" id="history"></div></dialog>
+<script>
+const DAYS=[
+ {id:"d1",title:"Pecho + hombro + tríceps",short:"Día 1",desc:"Cuádriceps incluidos · 8 ejercicios",ex:[
+  ["hack","Hack o prensa","Cuádriceps · glúteos · femorales",3],
+  ["banca","Press de banca","Pecho medio · tríceps · hombro anterior",3],
+  ["inclinado","Press inclinado","Pecho superior · hombro anterior · tríceps",3],
+  ["extension","Extensión de cuádriceps","Cuádriceps",2],
+  ["militar","Press militar","Hombro anterior y lateral · tríceps",2],
+  ["laterales","Elevaciones laterales","Hombro lateral",2],
+  ["triceps_abajo","Tríceps hacia abajo","Tríceps lateral y medial",2],
+  ["triceps_nuca","Tríceps trasnuca","Tríceps · cabeza larga",2]]},
+ {id:"d2",title:"Espalda + bíceps",short:"Día 2",desc:"Femoral y gemelos incluidos · 8 ejercicios",ex:[
+  ["femoral","Femoral tumbado","Isquiotibiales",3],
+  ["jalon","Jalón al pecho","Dorsal ancho · bíceps",3],
+  ["remo","Remo de dorsales","Dorsal · romboides · trapecio · bíceps",3],
+  ["gemelos","Gemelos","Gastrocnemio · sóleo",3],
+  ["remo_uni","Remo unilateral","Dorsal · espalda media · bíceps",2],
+  ["face","Face pull","Hombro posterior · espalda alta",2],
+  ["curl","Curl con barra","Bíceps · antebrazo",2],
+  ["martillo","Curl martillo","Braquial · bíceps · antebrazo",2]]},
+ {id:"d3",title:"Tren superior + piernas",short:"Día 3",desc:"Segundo estímulo general · 8 ejercicios",ex:[
+  ["hack","Hack o prensa","Cuádriceps · glúteos · femorales",3],
+  ["pec","Pec deck o Hulk","Pectoral mayor · hombro anterior",3],
+  ["jalon_remo","Jalón o remo","Dorsal · espalda media · bíceps",3],
+  ["femoral","Femoral tumbado","Isquiotibiales",2],
+  ["cruce","Cruce de poleas hacia abajo","Pecho inferior",2],
+  ["laterales","Elevaciones laterales","Hombro lateral",2],
+  ["superserie","Superserie bíceps + tríceps","Bíceps · tríceps · antebrazo",2],
+  ["abdomen","Abdomen","Recto abdominal · transverso · oblicuos",3]]},
+ {id:"d4",title:"Hombros + brazos",short:"Día 4",desc:"Opcional · complementos y puntos visuales",optional:true,ex:[
+  ["militar","Press militar ligero","Hombro anterior y lateral · tríceps",3],
+  ["laterales","Elevaciones laterales","Hombro lateral",3],
+  ["face","Face pull","Hombro posterior · espalda alta",3],
+  ["curl","Curl de bíceps","Bíceps · antebrazo",3],
+  ["triceps_abajo","Tríceps en polea","Tríceps",3],
+  ["abductores","Abductores o aductores","Glúteo medio o cara interna del muslo",3],
+  ["gemelos","Gemelos","Gastrocnemio · sóleo",3],
+  ["abdomen","Abdomen","Recto abdominal · transverso · oblicuos",3]]}
+];
+const TECH={
+ hack:["Apoya toda la espalda y coloca los pies al ancho de hombros.","Baja controlando hasta donde mantengas pelvis y espalda apoyadas. Empuja con todo el pie sin bloquear las rodillas.","Inspira al bajar y expulsa el aire al subir.","No juntes las rodillas, no rebotes abajo y no levantes los talones."],
+ banca:["Ojos bajo la barra, omóplatos juntos y hacia abajo, pies firmes.","Baja hacia la parte media-baja del pecho con antebrazos casi verticales. Sube sin perder la posición.","Inspira antes de bajar; expulsa al superar la parte difícil.","No abras los codos a 90°, no rebotes la barra ni levantes los hombros."],
+ inclinado:["Banco a unos 20–35°. Omóplatos recogidos y pies firmes.","Baja hacia la parte alta del pecho y sube siguiendo una trayectoria ligeramente hacia atrás.","Inspira al bajar y expulsa al subir.","No inclines demasiado el banco ni conviertas el ejercicio en press de hombros."],
+ extension:["Alinea la rodilla con el eje de giro y pega la espalda al respaldo.","Extiende con control, aprieta arriba y baja lentamente sin dejar caer el peso.","Expulsa al extender e inspira al bajar.","No levantes la cadera, no des patadas ni bloquees violentamente la rodilla."],
+ militar:["Abdomen y glúteos firmes, muñecas sobre los codos.","Empuja verticalmente sin arquear la zona lumbar; termina con los brazos junto a las orejas.","Inspira abajo y expulsa al empujar.","No saques las costillas, no uses impulso ni bajes más de lo cómodo."],
+ laterales:["Codos ligeramente flexionados y hombros alejados de las orejas.","Eleva los brazos hacia los lados hasta aproximadamente la altura del hombro, guiando con los codos.","Expulsa al subir e inspira al bajar.","No balancees el cuerpo, no encojas los hombros ni uses más peso del controlable."],
+ triceps_abajo:["Codos pegados al cuerpo y hombros quietos.","Extiende hasta abajo moviendo solo el antebrazo y vuelve controladamente.","Expulsa al extender e inspira al volver.","No abras los codos, no inclines todo el cuerpo ni balancees el peso."],
+ triceps_nuca:["Mantén los codos orientados al frente y el abdomen firme.","Flexiona los codos llevando la carga detrás de la cabeza y extiende sin mover los brazos.","Inspira al bajar y expulsa al extender.","No arquees la espalda ni abras excesivamente los codos."],
+ femoral:["Alinea las rodillas con el eje y sitúa el rodillo sobre la parte baja de las pantorrillas.","Flexiona llevando los talones hacia los glúteos sin levantar la cadera; baja despacio.","Expulsa al flexionar e inspira al bajar.","No levantes la pelvis, no rebotes ni acortes la bajada."],
+ jalon:["Agarre algo más ancho que hombros, pecho alto y pies firmes.","Lleva los codos hacia abajo y atrás hasta acercar la barra al pecho superior. Sube controlando.","Expulsa al tirar e inspira al subir.","No tires tras la nuca, no te balancees ni conviertas el movimiento en un remo."],
+ remo:["Pecho estable, espalda neutra y hombros bajos.","Tira llevando los codos atrás, junta suavemente los omóplatos y vuelve sin encorvarte.","Expulsa al tirar e inspira al volver.","No uses la zona lumbar como impulso ni encogas los hombros."],
+ gemelos:["Apoya el antepié con el talón libre y mantén las rodillas estables.","Baja el talón completamente, sube todo lo posible y haz una pausa arriba.","Expulsa al subir e inspira al bajar.","No rebotes ni hagas repeticiones cortas y rápidas."],
+ remo_uni:["Apoya bien la mano y la rodilla, con espalda neutra.","Lleva el codo hacia la cadera sin girar el tronco; estira el dorsal al bajar.","Expulsa al tirar e inspira al bajar.","No retuerzas el cuerpo ni eleves el hombro hacia la oreja."],
+ face:["Polea a la altura de la cara, agarre de cuerda y pecho estable.","Tira hacia la frente separando las manos y llevando los codos atrás.","Expulsa al tirar e inspira al volver.","No arquees la espalda, no bajes los codos ni uses impulso."],
+ curl:["Codos junto al cuerpo, muñecas neutras y torso quieto.","Flexiona los codos sin moverlos hacia delante y baja completamente con control.","Expulsa al subir e inspira al bajar.","No balancees la espalda ni dobles las muñecas."],
+ martillo:["Palmas enfrentadas, codos pegados y hombros relajados.","Sube las mancuernas manteniendo el agarre neutro y baja lentamente.","Expulsa al subir e inspira al bajar.","No balancees el torso ni adelantes los codos."],
+ pec:["Ajusta el asiento para que codos/manos queden a la altura del pecho; omóplatos apoyados.","Junta los brazos como si abrazaras, aprieta el pecho y vuelve sin perder tensión.","Expulsa al cerrar e inspira al abrir.","No choques las placas, no adelantes los hombros ni abras más de lo cómodo."],
+ jalon_remo:["Elige jalón para amplitud o remo para grosor. Mantén pecho alto y abdomen firme.","Mueve los codos con control: hacia abajo en jalón o hacia atrás en remo.","Expulsa al tirar e inspira al volver.","No balancees el torso ni tires solo con las manos."],
+ cruce:["Poleas altas, un pie adelantado y ligera inclinación del torso.","Lleva las manos hacia abajo y al centro formando un arco; aprieta el pecho.","Expulsa al juntar e inspira al abrir.","No dobles y estires los codos durante la repetición ni cargues demasiado."],
+ superserie:["Prepara un ejercicio de curl y otro de extensión de tríceps.","Haz el curl, descansa solo lo necesario para cambiar y realiza el tríceps. Después descansa 60–90 s.","Expulsa durante la fase de esfuerzo de cada ejercicio.","No sacrifiques técnica por hacer la superserie deprisa."],
+ abdomen:["Mantén costillas hacia la pelvis y zona lumbar controlada.","Acerca el esternón a la pelvis o eleva las rodillas sin balancearte.","Expulsa al contraer e inspira al volver.","No tires del cuello ni uses impulso con las piernas."],
+ abductores:["Ajusta la máquina para moverte sin dolor y mantén la espalda apoyada.","Al abrir trabaja abductores/glúteo medio; al cerrar, aductores. Haz todo el recorrido controlado.","Expulsa al mover la carga e inspira al volver.","No rebotes, no cierres de golpe ni despegues la espalda."]
+};
+let active=localStorage.getItem("fitActive")||"d1";
+let history=JSON.parse(localStorage.getItem("fitHistory")||"[]");
+const $=s=>document.querySelector(s);
+function esc(s){return String(s).replace(/[&<>"']/g,m=>({"&":"&amp;","<":"&lt;",">":"&gt;","\"":"&quot;","'":"&#039;"}[m]))}
+function latest(exId){for(let i=history.length-1;i>=0;i--){const x=history[i].exercises?.find(e=>e.id===exId);if(x){const best=x.sets.reduce((a,b)=>Number(b.kg)>Number(a.kg)?b:a,x.sets[0]||{});return best}}return null}
+function renderTabs(){const tabs=$("#tabs");tabs.innerHTML=DAYS.map(d=>`<button class="tab ${d.id===active?"active":""}" data-day="${d.id}">${d.short}${d.optional?" · opcional":""}</button>`).join("");tabs.querySelectorAll("button").forEach(b=>b.onclick=()=>{active=b.dataset.day;localStorage.setItem("fitActive",active);renderTabs();renderWorkout()})}
+function renderWorkout(){const d=DAYS.find(x=>x.id===active);$("#workout").innerHTML=`<div class="dayhead"><div><div class="eyebrow">${d.optional?"Complemento opcional":"Sesión principal"}</div><h2>${d.title}</h2><p>${d.desc}</p></div><p>8–12 reps · deja 1–2 en reserva</p></div>`+d.ex.map((e,i)=>exerciseHTML(e,i)).join("");bindExercises()}
+function exerciseHTML(e,i){const [id,name,muscles,series]=e,last=latest(id),t=TECH[id]||TECH.jalon_remo;return `<article class="exercise" data-id="${id}"><div class="ex-top"><div class="num">${i+1}</div><div class="ex-name"><h3>${name}</h3><p>${muscles}</p></div><div class="last">Último<b>${last?esc(last.kg)+" kg × "+esc(last.reps):"Sin datos"}</b></div></div><div class="sets">${Array.from({length:series},(_,n)=>`<div class="setrow"><span class="setno">S${n+1}</span><label class="field"><input inputmode="decimal" aria-label="Kilos serie ${n+1}" class="kg" placeholder="${last?esc(last.kg):"0"}"><span>kg</span></label><label class="field"><input inputmode="numeric" aria-label="Repeticiones serie ${n+1}" class="reps" placeholder="${last?esc(last.reps):"reps"}"><span>rep</span></label><button class="done" aria-label="Marcar serie completada">✓</button></div>`).join("")}</div><button class="tech-toggle">Ver técnica correcta <span>＋</span></button><div class="tech"><h4>Colocación</h4><p>${t[0]}</p><h4>Ejecución</h4><p>${t[1]}</p><h4>Respiración</h4><p>${t[2]}</p><h4>Evita</h4><p>${t[3]}</p></div></article>`}
+function bindExercises(){document.querySelectorAll(".done").forEach(b=>b.onclick=()=>b.classList.toggle("checked"));document.querySelectorAll(".tech-toggle").forEach(b=>b.onclick=()=>{const t=b.nextElementSibling;t.classList.toggle("open");b.querySelector("span").textContent=t.classList.contains("open")?"−":"＋"})}
+function save(){const d=DAYS.find(x=>x.id===active),exercises=[];document.querySelectorAll(".exercise").forEach(card=>{const sets=[...card.querySelectorAll(".setrow")].map(r=>({kg:r.querySelector(".kg").value.trim(),reps:r.querySelector(".reps").value.trim(),done:r.querySelector(".done").classList.contains("checked")})).filter(s=>s.kg||s.reps);if(sets.length)exercises.push({id:card.dataset.id,name:card.querySelector("h3").textContent,sets})});if(!exercises.length){toast("Añade al menos un peso o repetición");return}history.push({id:Date.now(),date:new Date().toISOString(),day:d.id,title:d.title,notes:$("#notes").value.trim(),exercises});localStorage.setItem("fitHistory",JSON.stringify(history));$("#notes").value="";updateSummary();renderWorkout();toast("Entrenamiento guardado")}
+function toast(msg){const t=$("#toast");t.textContent=msg;t.classList.add("show");setTimeout(()=>t.classList.remove("show"),2200)}
+function updateSummary(){const now=new Date(),monday=new Date(now);monday.setDate(now.getDate()-((now.getDay()+6)%7));monday.setHours(0,0,0,0);$("#totalSessions").textContent=history.length;$("#weekSessions").textContent=history.filter(h=>new Date(h.date)>=monday).length+" / 3";$("#lastDate").textContent=history.length?new Date(history.at(-1).date).toLocaleDateString("es-ES",{day:"2-digit",month:"short"}):"—"}
+function showHistory(){const box=$("#history");box.innerHTML=history.length?[...history].reverse().map(h=>`<div class="histrow"><b>${new Date(h.date).toLocaleDateString("es-ES",{weekday:"short",day:"numeric",month:"short"})}</b> · ${esc(h.title)}<br><span style="color:var(--muted)">${h.exercises.length} ejercicios${h.notes?" · "+esc(h.notes):""}</span></div>`).join(""):`<div class="empty">Todavía no has guardado ningún entrenamiento.</div>`;$("#historyDialog").showModal()}
+const today=new Date();$("#dayNum").textContent=today.getDate();$("#month").textContent=today.toLocaleDateString("es-ES",{month:"short"});$("#saveBtn").onclick=save;$("#historyBtn").onclick=showHistory;$("#closeHistory").onclick=()=>$("#historyDialog").close();renderTabs();renderWorkout();updateSummary();
+if(document.modelContext?.registerTool){document.modelContext.registerTool({name:"registrar_entrenamiento",title:"Registrar entrenamiento",description:"Guarda el entrenamiento visible con los pesos y repeticiones indicados.",inputSchema:{type:"object",properties:{},additionalProperties:false},annotations:{readOnlyHint:false,untrustedContentHint:false},execute:()=>{save();return{guardado:true,dia:active}}}).catch(()=>{})}
+</script>
+</body>
+</html>
