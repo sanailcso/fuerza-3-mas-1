@@ -4,6 +4,12 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
   <meta name="theme-color" content="#0b0d10">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="Fuerza 3+1">
+  <link rel="manifest" href="/manifest.webmanifest">
+  <link rel="apple-touch-icon" sizes="180x180" href="/icons/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="192x192" href="/icons/icon-192.png">
   <title>Fuerza 3+1 · Seguimiento</title>
   <meta name="description" content="Rutina 3+1 con técnica y seguimiento de cargas.">
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%230b0d10'/%3E%3Cpath d='M13 27v10m7-16v22m24-22v22m7-16v10M20 32h24' stroke='%23ff3b30' stroke-width='6' stroke-linecap='round'/%3E%3C/svg%3E">
@@ -257,6 +263,7 @@ async function importBackup(file){if(!file)return;try{const data=JSON.parse(awai
 createSnapshot();
 const today=new Date();$("#dayNum").textContent=today.getDate();$("#month").textContent=today.toLocaleDateString("es-ES",{month:"short"});$("#saveBtn").onclick=save;$("#notes").oninput=captureDraft;$("#historyBtn").onclick=showHistory;$("#progressBtn").onclick=showProgress;$("#editRoutineBtn").onclick=openRoutineEditor;$("#backupBtn").onclick=openBackups;$("#exportBtn").onclick=exportBackup;$("#importFile").onchange=e=>importBackup(e.target.files[0]);$("#muscleSelect").onchange=updateExerciseFilter;$("#addExerciseBtn").onclick=addExercise;$("#renameDayBtn").onclick=renameDay;$("#addDayBtn").onclick=addTrainingDay;$("#deleteDayBtn").onclick=deleteTrainingDay;$("#exerciseSelect").onchange=renderProgress;$("#closeHistory").onclick=()=>$("#historyDialog").close();$("#closeSession").onclick=()=>$("#sessionDialog").close();$("#closeProgress").onclick=()=>$("#progressDialog").close();$("#closeRoutine").onclick=()=>$("#routineDialog").close();$("#closeBackup").onclick=()=>$("#backupDialog").close();$("#closeAlt").onclick=closeAlternative;$("#altPreview").onclick=e=>{if(e.target.id==="altPreview")closeAlternative()};document.addEventListener("keydown",e=>{if(e.key==="Escape"&&$("#altPreview").classList.contains("open"))closeAlternative()});renderTabs();renderWorkout();updateSummary();
 if(document.modelContext?.registerTool){document.modelContext.registerTool({name:"registrar_entrenamiento",title:"Registrar entrenamiento",description:"Guarda el entrenamiento visible con los pesos y repeticiones indicados.",inputSchema:{type:"object",properties:{},additionalProperties:false},annotations:{readOnlyHint:false,untrustedContentHint:false},execute:()=>{save();return{guardado:true,dia:active}}}).catch(()=>{})}
+if("serviceWorker" in navigator){window.addEventListener("load",()=>navigator.serviceWorker.register("/sw.js").catch(()=>{}))}
 </script>
 </body>
 </html>
