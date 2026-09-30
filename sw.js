@@ -1,4 +1,4 @@
-const CACHE = "fuerza-app-v4";
+const CACHE = "fuerza-app-v5";
 const SHELL = ["/", "/manifest.webmanifest", "/icons/icon-192.png", "/icons/icon-512.png", "/icons/icon-512-maskable.png", "/icons/apple-touch-icon.png"];
 self.addEventListener("install", event => {
   event.waitUntil(caches.open(CACHE).then(cache => cache.addAll(SHELL)).then(() => self.skipWaiting()));
@@ -10,7 +10,7 @@ self.addEventListener("fetch", event => {
   const request = event.request;
   if (request.method !== "GET" || new URL(request.url).origin !== self.location.origin) return;
   event.respondWith(fetch(request).then(response => {
-    if (response.ok && (request.mode === "navigate" || SHELL.includes(new URL(request.url).pathname))) {
+    if (response.ok && (request.mode === "navigate" || SHELL.includes(new URL(request.url).pathname) || new URL(request.url).pathname.startsWith("/exercises/"))) {
       const copy = response.clone();
       event.waitUntil(caches.open(CACHE).then(cache => cache.put(request, copy)));
     }
