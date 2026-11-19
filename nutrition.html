@@ -5,12 +5,12 @@
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="theme-color" content="#0b0d10">
 <title>Comidas · Fuerza 3+1</title>
-<link rel="manifest" href="/manifest.webmanifest">
-<link rel="stylesheet" href="/nutrition.css">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="stylesheet" href="nutrition.css">
 </head>
 <body>
 <main class="app">
-  <header><a class="back" href="/">‹ Entrenamiento</a><span class="eyebrow">FUERZA 3+1</span></header>
+  <header><a class="back" href="./">‹ Entrenamiento</a><span class="eyebrow">FUERZA 3+1</span></header>
   <div class="title"><div><h1>Comidas</h1><p>Una estimación útil que puedes corregir.</p></div><input id="date" type="date" aria-label="Fecha del diario"></div>
   <section class="summary" aria-label="Resumen del día"><div><span>Calorías</span><strong id="totalKcal">0</strong><small>kcal</small></div><div><span>Proteínas</span><strong id="totalProtein">0</strong><small>g</small></div><div><span>Comidas</span><strong id="totalMeals">0</strong></div></section>
   <div class="actions"><button id="photoBtn" class="primary">📷 Foto de comida</button><button id="textBtn">Describir comida</button><button id="barcodeBtn">Código de barras</button></div>
@@ -27,5 +27,5 @@
 </form></dialog>
 <dialog id="capture"><div class="modal"><div class="row"><h2 id="captureTitle">Añadir comida</h2><button id="closeCapture" class="icon" aria-label="Cerrar">×</button></div><div id="captureBody"></div></div></dialog>
 <input id="photoInput" type="file" accept="image/*" capture="environment" hidden>
-<script src="/nutrition.js" defer></script>
+<script src="nutrition.js" defer></script>
 </body></html>
