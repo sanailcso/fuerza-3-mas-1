@@ -57,7 +57,7 @@
   <div id="backupReminder"></div>
   <details class="current-week"><summary>Detalle de esta semana</summary><div id="weekDetail"></div></details>
   <nav class="tabs" id="tabs" aria-label="Días de entrenamiento"></nav>
-  <div class="routine-action"><button id="backupBtn">Copias</button><button id="extraDayBtn">＋ Día extra</button><button id="editRoutineBtn">Editar este día</button></div>
+  <div class="routine-action"><button type="button" onclick="location.href='nutrition.html'">Comidas</button><button id="backupBtn">Copias</button><button id="extraDayBtn">＋ Día extra</button><button id="editRoutineBtn">Editar este día</button></div>
   <section id="workout"></section>
   <label for="notes" class="eyebrow" style="display:block;margin-top:20px">Notas de la sesión</label>
   <textarea id="notes" class="notes" placeholder="Cómo te has sentido, molestias, cambios de máquina…"></textarea>
@@ -321,7 +321,7 @@ if(document.modelContext?.registerTool){document.modelContext.registerTool({name
 $("#extraDayBtn").onclick=()=>{addTrainingDay();openRoutineEditor()};
 $("#dayTitle").addEventListener("keydown",event=>{if(event.key==="Enter"){event.preventDefault();renameDay()}});
 setInterval(()=>{if(visibleDays().some(d=>d.id===active)){renderClock()}else{renderTabs();renderWorkout();updateSummary()}},1000);
-if("serviceWorker" in navigator){window.addEventListener("load",()=>navigator.serviceWorker.register("/sw.js").catch(()=>{}))}
+if("serviceWorker" in navigator){window.addEventListener("load",()=>navigator.serviceWorker.register("sw.js").catch(()=>{}))}
 </script>
 </body>
 </html>
