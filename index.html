@@ -321,7 +321,7 @@ if(document.modelContext?.registerTool){document.modelContext.registerTool({name
 $("#extraDayBtn").onclick=()=>{addTrainingDay();openRoutineEditor()};
 $("#dayTitle").addEventListener("keydown",event=>{if(event.key==="Enter"){event.preventDefault();renameDay()}});
 setInterval(()=>{if(visibleDays().some(d=>d.id===active)){renderClock()}else{renderTabs();renderWorkout();updateSummary()}},1000);
-if("serviceWorker" in navigator){window.addEventListener("load",()=>navigator.serviceWorker.register("/sw.js").catch(()=>{}))}
+if("serviceWorker" in navigator){window.addEventListener("load",()=>navigator.serviceWorker.register("sw.js").catch(()=>{}))}
 </script>
 </body>
 </html>
