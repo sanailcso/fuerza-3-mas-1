@@ -1,5 +1,6 @@
 const CACHE = "fuerza-app-v8";
-const ROOT = new URL(self.registration.scope).pathname;\nconst SHELL = [ROOT, ...["nutrition.html", "nutrition.css", "nutrition.js", "manifest.webmanifest", "icons/icon-192.png", "icons/icon-512.png", "icons/icon-512-maskable.png", "icons/apple-touch-icon.png"].map(path => ROOT + path)];
+const ROOT = new URL(self.registration.scope).pathname;
+const SHELL = [ROOT, ...["nutrition.html", "nutrition.css", "nutrition.js", "manifest.webmanifest", "icons/icon-192.png", "icons/icon-512.png", "icons/icon-512-maskable.png", "icons/apple-touch-icon.png"].map(path => ROOT + path)];
 self.addEventListener("install", event => {
   event.waitUntil(caches.open(CACHE).then(cache => cache.addAll(SHELL)).then(() => self.skipWaiting()));
 });
